@@ -11,7 +11,6 @@
 		BA1FAF4E258F495B008E31C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1FAF4D258F495B008E31C5 /* ContentView.swift */; };
 		BA1FAF50258F495C008E31C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA1FAF4F258F495C008E31C5 /* Assets.xcassets */; };
 		BA1FAF53258F495C008E31C5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA1FAF52258F495C008E31C5 /* Preview Assets.xcassets */; };
-		BA1FAF5C258F4995008E31C5 /* Note_Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1FAF5B258F4995008E31C5 /* Note_Content.swift */; };
 		BA1FAF5F258F4FF1008E31C5 /* WritingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1FAF5E258F4FF1008E31C5 /* WritingView.swift */; };
 		BACE7BDB259CCC6E00D19E0A /* GetMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACE7BDA259CCC6E00D19E0A /* GetMovie.swift */; };
 		BACE7BDE259CCE9300D19E0A /* CALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACE7BDD259CCE9300D19E0A /* CALayer.swift */; };
@@ -21,6 +20,8 @@
 		BACE7BEC259D4D9B00D19E0A /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACE7BEB259D4D9B00D19E0A /* TextView.swift */; };
 		BACE7BEF259D4DD600D19E0A /* ViewStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACE7BEE259D4DD600D19E0A /* ViewStyles.swift */; };
 		BACE7C0F259D5CA000D19E0A /* KeyboardObserving in Frameworks */ = {isa = PBXBuildFile; productRef = BACE7C0E259D5CA000D19E0A /* KeyboardObserving */; };
+		BAFEDD2925B4A41900E8EADD /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFEDD2825B4A41900E8EADD /* KeyboardObserver.swift */; };
+		BAFEDD3725B87C5200E8EADD /* InputData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFEDD3625B87C5200E8EADD /* InputData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +31,6 @@
 		BA1FAF4F258F495C008E31C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA1FAF52258F495C008E31C5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BA1FAF54258F495C008E31C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BA1FAF5B258F4995008E31C5 /* Note_Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note_Content.swift; sourceTree = "<group>"; };
 		BA1FAF5E258F4FF1008E31C5 /* WritingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingView.swift; sourceTree = "<group>"; };
 		BACE7BDA259CCC6E00D19E0A /* GetMovie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetMovie.swift; sourceTree = "<group>"; };
 		BACE7BDD259CCE9300D19E0A /* CALayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CALayer.swift; sourceTree = "<group>"; };
@@ -39,6 +39,8 @@
 		BACE7BE8259D4CE200D19E0A /* PlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
 		BACE7BEB259D4D9B00D19E0A /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		BACE7BEE259D4DD600D19E0A /* ViewStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStyles.swift; sourceTree = "<group>"; };
+		BAFEDD2825B4A41900E8EADD /* KeyboardObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
+		BAFEDD3625B87C5200E8EADD /* InputData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,17 +76,18 @@
 			children = (
 				BA1FAF4B258F495B008E31C5 /* NoteApp.swift */,
 				BA1FAF4D258F495B008E31C5 /* ContentView.swift */,
-				BA1FAF5B258F4995008E31C5 /* Note_Content.swift */,
 				BA1FAF5E258F4FF1008E31C5 /* WritingView.swift */,
-				BACE7BE5259D4C3700D19E0A /* InputAccessory.swift */,
-				BACE7BE8259D4CE200D19E0A /* PlaceholderTextView.swift */,
-				BACE7BEB259D4D9B00D19E0A /* TextView.swift */,
+				BAFEDD3625B87C5200E8EADD /* InputData.swift */,
 				BACE7BEE259D4DD600D19E0A /* ViewStyles.swift */,
 				BACE7BDA259CCC6E00D19E0A /* GetMovie.swift */,
 				BACE7BE1259CDEDD00D19E0A /* PreviewLayer.swift */,
 				BACE7BDD259CCE9300D19E0A /* CALayer.swift */,
 				BA1FAF4F258F495C008E31C5 /* Assets.xcassets */,
 				BA1FAF54258F495C008E31C5 /* Info.plist */,
+				BAFEDD2825B4A41900E8EADD /* KeyboardObserver.swift */,
+				BACE7BE5259D4C3700D19E0A /* InputAccessory.swift */,
+				BACE7BE8259D4CE200D19E0A /* PlaceholderTextView.swift */,
+				BACE7BEB259D4D9B00D19E0A /* TextView.swift */,
 				BA1FAF51258F495C008E31C5 /* Preview Content */,
 			);
 			path = "呑み日記";
@@ -173,13 +176,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA1FAF5C258F4995008E31C5 /* Note_Content.swift in Sources */,
 				BA1FAF4E258F495B008E31C5 /* ContentView.swift in Sources */,
 				BACE7BE2259CDEDD00D19E0A /* PreviewLayer.swift in Sources */,
+				BAFEDD2925B4A41900E8EADD /* KeyboardObserver.swift in Sources */,
 				BACE7BE9259D4CE200D19E0A /* PlaceholderTextView.swift in Sources */,
 				BACE7BE6259D4C3700D19E0A /* InputAccessory.swift in Sources */,
 				BA1FAF4C258F495B008E31C5 /* NoteApp.swift in Sources */,
 				BACE7BEF259D4DD600D19E0A /* ViewStyles.swift in Sources */,
+				BAFEDD3725B87C5200E8EADD /* InputData.swift in Sources */,
 				BACE7BDE259CCE9300D19E0A /* CALayer.swift in Sources */,
 				BACE7BDB259CCC6E00D19E0A /* GetMovie.swift in Sources */,
 				BA1FAF5F258F4FF1008E31C5 /* WritingView.swift in Sources */,

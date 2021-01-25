@@ -4,7 +4,7 @@
 //
 //  Created by SHIRAHATA YUTAKA on 2020/12/31.
 //
-
+/*
 import UIKit
 import SwiftUI
 import Combine
@@ -96,3 +96,4 @@ extension TextView {
         }
     }
 }
+*/

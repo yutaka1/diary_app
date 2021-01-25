@@ -8,160 +8,216 @@
 import SwiftUI
 import KeyboardObserving
 
-var isText:Bool = true
-
+//var isText:Bool = true
 
 struct WritingView: View {
+    /*
     @State var input:String = ""
+    @State var state:String = ""
+    @State var shop:String = ""
+    @State var kind:String = ""
+    @State var product_area:String = ""
+    */
+    /*
+    let bred = 53
+    let bgreen = 57
+    let bblue = 63
+    */
+    @ObservedObject var inputdata = InputData()
+    @State var input:String = ""
+    //@State var bgacolor:UIColor
+    let bgtopcolor = Color.init(red: 0.26, green: 0.27, blue: 0.39,opacity: 1.0)
+    let bgcolor = Color.init(red: 0.26, green: 0.27, blue: 0.39,opacity: 1.0)
+    let forcolor = Color.white
+    let exforcolor = Color.white
+    
+    
     @ObservedObject var getmovie = GetMovie()
+    @Environment(\.presentationMode) var presentation
     var body: some View {
+
         if getmovie.takingmovie == false{
+
             GeometryReader { geom in
-                    VStack{
-                        //Spacer(minLength: 10)
-                        ScrollView(.vertical){
-                            //Spacer(minLength: geom.size.height*0.15)
-                            ZStack{
-                                //imageの表示
-                                if getmovie.image != nil{
-                                    Image(uiImage: getmovie.image!)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .scaledToFit()
-                                        //.edgesIgnoringSafeArea(.top)
-                                    //再撮影ボタン
-                                    VStack{
-                                        HStack{
-                                            Spacer()
-                                            Button(action: {
-                                                getmovie.captureimage()
-                                            }){
-                                                Image(systemName: "return")
-                                                    .resizable()
-                                                    .foregroundColor(Color.black)
-                                                    .background(Color.white)
-                                                    .frame(width: 20, height: 20)
-                                            }
-                                        }
-                                        Spacer()
-                                    }
-                                }
-                                else{
+                //ScrollView(.vertical){
+                VStack(spacing: 0){
+                        ZStack{
+                            bgtopcolor
+                            //Color.black
+                                 .edgesIgnoringSafeArea(.vertical)
+                            //imageの表示
+                            if getmovie.image != nil{
+                                Image(uiImage: getmovie.image!)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .scaledToFit()
                                     
-                                    Rectangle()
-                                        .stroke(lineWidth: 0)
-                                        .aspectRatio(contentMode: .fit)
-                                        .foregroundColor(Color.white)
-                                        .scaledToFit()
-                                        //.edgesIgnoringSafeArea(.top)
-     
-                                    //写真取得ボタン
+                                    //.edgesIgnoringSafeArea(.top)
+                                //再撮影ボタン
+                                VStack{
+                                    HStack{
+                                        Spacer()
+                                        Button(action: {
+                                            getmovie.captureimage()
+                                        }){
+                                            Image(systemName: "return")
+                                                .resizable()
+                                                .foregroundColor(Color.black)
+                                                .background(Color.white)
+                                                .frame(width: 20, height: 20)
+                                        }
+                                    }
+                                    Spacer()
+                                }
+                            }
+
+                            else{
+                                
+                                Rectangle()
+                                    .stroke(lineWidth: 0)
+                                    .aspectRatio(contentMode: .fit)
+                                    .foregroundColor(Color.white)
+                                    .scaledToFit()
+                                    //.edgesIgnoringSafeArea(.top)
+ 
+                                //写真取得ボタン
+                                Button(action: {
+                                    getmovie.captureimage()
+                                }){
+                                    Image(systemName: "camera.circle")
+                                        .resizable()
+                                        .foregroundColor(Color.black)
+                                        .background(Color.white)
+                                        .frame(width: 50, height: 50)
+                                }
+                            }
+                            //前の画面への遷移ボタン
+                            VStack{
+                                HStack{
                                     Button(action: {
-                                        getmovie.captureimage()
+                                               self.presentation.wrappedValue.dismiss()
                                     }){
-                                        Image(systemName: "camera.circle")
+                                        Image(systemName: "arrowshape.turn.up.backward.2.fill")
                                             .resizable()
                                             .foregroundColor(Color.black)
                                             .background(Color.white)
-                                            .frame(width: 50, height: 50)
+                                            .frame(width: 25, height: 25)
                                     }
+                                    Spacer()
                                 }
+                                Spacer()
                             }
+                            
+                        }
+                    Divider()
+                        .foregroundColor(Color.white)
+                    
+                        HStack{
+                            Text("場所")
+                                .bold()
+                                .foregroundColor(exforcolor)
+                            Spacer()
+                            Text("種類")
+                                .bold()
+                                .foregroundColor(exforcolor)
+                            Spacer()
+                        }
+                        .background(bgcolor)
+                        //.background(Color.black)
+                        HStack{
+                            Group{
+                                TextField("ex:東京", text: $inputdata.state)
+                                    .foregroundColor(forcolor)
+                                Spacer()
+                                TextField("ex:ビール", text: $inputdata.kind)
+                                    .foregroundColor(forcolor)
+                                Spacer()
+                            }
+                            //.background(Color.init(red: 0.53, green: 0.57, blue: 0.63,opacity: 1))
+                            .background(bgcolor)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 1)
+                                    .stroke(Color.white, lineWidth: 1))
+                        }
+                        .background(bgcolor)
+                        //.background(Color.black)
+                        HStack{
+                            Text("お店")
+                                .bold()
+                                .foregroundColor(exforcolor)
+                            Spacer()
+                            Text("産地")
+                                .bold()
+                                .foregroundColor(exforcolor)
+                            Spacer()
+                        }
+                        .background(bgcolor)
+                        //.background(Color.black)
+                        HStack{
+                            Group{
+                                TextField("ex:~店", text: $inputdata.shop)
+                                Spacer()
+                                TextField("ex:東京", text: $inputdata.product_area)
+                                Spacer()
+                            }
+                            .background(Color.clear)
+                            .foregroundColor(forcolor)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 1)
+                                    .stroke(Color.white, lineWidth: 1))
+                            
+                        }
+                        .background(bgcolor)
+                        //.background(Color.black)
+                        HStack{
+                            Text("メモ")
+                                .bold()
+                            Spacer()
+                        }
+                        .foregroundColor(exforcolor)
+                        .background(bgcolor)
+                        //.background(Color.black)
+                        
 
                             
-                            
                         
-                        /*
-                        .frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height)
-                        .border(Color.black, width: 1)
-                        */
-                        
-                        //ScrollView(.vertical){
-                        /*
-                            TextView(" Input text", text: self.$input)
-                                .frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height*0.3)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 5)
-                                        .stroke(Color.red, lineWidth: 1))
-     */
-                        //}
-                        //.frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height*0.3)
-                        //.border(Color.black, width: 1)
-                            
-    /*
-                                .onEvent(onChanged: {
-                                                //self.isEditing = true
-                                            }, onEnded: {
-                                                //self.version += 1
-                                            })
-                                //Spacer(minLength: 20)
-     */
-                        
-                        /*
-                        TabView{
-                            Text(input)
-                                .tabItem{
-                                    Text("保存")
-                                }
-                            MultilineTextField(text: $input)
-                                .frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height*0.4)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 5)
-                                        .stroke(Color.red, lineWidth: 5))
-                                .tabItem{
-                                    Text("編集")
-                                }
-                        }
-    */
-                                            
-                           
-    /*
-                        HStack{
-                            //写真取得ボタン
-                            Button(action: {
-                                isText = false
-                            }){
-                                Text("編集")
-                                    .foregroundColor(Color.black)
-                                    .background(Color.white)
-                                    .frame(width: 50, height: 50)
-                            }
-                            Spacer()
-                            //写真取得ボタン
-                            Button(action: {
-                                isText = true
-                            }){
-                                Text("保存")
-                                    .foregroundColor(Color.black)
-                                    .background(Color.white)
-                                    .frame(width: 50, height: 50)
-                            }
-                            
-                        }
-    */
-                            
-                        }
-                        TextView(" Input text", text: self.$input)
-                            .frame(width: UIScreen.main.bounds.width * 1, height: UIScreen.main.bounds.height*0.3)
+                        //TextView("", text: self.$input)
+                    MultilineTextField(text: $inputdata.input)//, bgacolor: $bgacolor)//UIColor(displayP3Red: bred, green: bgreen, blue: bblue, alpha: 1.0))
+                            .frame(width: UIScreen.main.bounds.width * 1.0, height: UIScreen.main.bounds.height*0.2)
                             .overlay(
-                                RoundedRectangle(cornerRadius: 5)
-                                    .stroke(Color.red, lineWidth: 1))
-                            .keyboardObserving()
-                        
-                  
-                   
-                    
-                }
+                                RoundedRectangle(cornerRadius: 1)
+                                    .stroke(Color.black, lineWidth: 1)
+                            //        .background(Color.gray)
+                            )
+                            .foregroundColor(forcolor)
+                            .background(bgcolor)
+                            //.background(Color.black)
+                    }
                     .navigationBarTitle("")
                     .navigationBarHidden(true)
-               
+                    .onTapGesture{
+                        //inputdata.input = self.input
+                        UIApplication.shared.closeKeyboard()
+                    }
+                    //.padding(.bottom, keyboard.keyboardHeight)
+                /*
+                    .onAppear{
+                        self.input = inputdata.input
+//                        self.keyboard.startObserve()
+                    }
+ */
+                /*
+                    .onDisappear(){
+                        self.keyboard.stopObserve()
+                    }
+ */
+                    
+                    
+                //}
                 
-                //.edgesIgnoringSafeArea(.top)
-        //.frame(width: bodyView
-          //      .size.width*0.5, height: bodyView.size.height*0.2)
             }
-                
         }
+        //写真の取得画面
         else{
             GeometryReader { geom in
                 VStack{
@@ -171,13 +227,6 @@ struct WritingView: View {
                     Button(action: {
                         getmovie.takephoto()
                     }){
-                        /*
-                        Text("写真の取得")
-                            .foregroundColor(Color.red)
-                            .background(Color.black)
-                            .fixedSize()
-                            .font(.custom("Arial", size: 30))
- */
                         Image(systemName: "camera.circle")
                             .resizable()
                             .foregroundColor(Color.black)
@@ -199,8 +248,15 @@ struct WritingView: View {
     }
 }
 
+extension UIApplication {
+    func closeKeyboard() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+
 struct MultilineTextField: UIViewRepresentable{
     @Binding var text: String
+    //@Binding var bgacolor: UIColor
     
     func makeUIView(context: Context) -> UITextView{
         let view = UITextView()
@@ -208,7 +264,9 @@ struct MultilineTextField: UIViewRepresentable{
         view.isScrollEnabled = true
         view.isEditable = true
         view.isUserInteractionEnabled = true
+        view.backgroundColor = UIColor(red: 0.26, green: 0.27, blue: 0.39, alpha: 1.0)
         view.font = UIFont.systemFont(ofSize: 18)
+        view.textColor = UIColor.white
         return view
     }
     func updateUIView(_ uiView: UITextView, context: Context) {
@@ -235,6 +293,7 @@ struct MultilineTextField: UIViewRepresentable{
         
         func textViewDidChange(_ textView: UITextView) {
             self.parent.text = textView.text
+                                        
         }
         
     }

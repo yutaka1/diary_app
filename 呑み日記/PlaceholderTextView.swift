@@ -4,7 +4,7 @@
 //
 //  Created by SHIRAHATA YUTAKA on 2020/12/31.
 //
-
+/*
 import UIKit
 
 /// PlaceholderTextView
@@ -121,3 +121,5 @@ extension PlaceholderTextView {
         self.endEditing(true)
     }
 }
+
+*/
